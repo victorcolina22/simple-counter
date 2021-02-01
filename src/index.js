@@ -1,17 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './App.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import PropTypes from 'prop-types';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+App.PropTypes = {
+    one: PropTypes.number,
+    two: PropTypes.number,
+    three: PropTypes.number,
+    four: PropTypes.number,
+    five: PropTypes.number,
+    six: PropTypes.number
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+let counter = 0
+setInterval(() => {
+    let digitOne = Math.floor(counter/1);
+    let digitTwo = Math.floor(counter/10);
+    let digitThree = Math.floor(counter/60);
+    let digitFour = Math.floor(counter/600);
+    let digitFive = Math.floor(counter/3600);
+    let digitSix = Math.floor(counter/36000);
+    ReactDOM.render(
+        <App
+        one = {digitOne}
+        two = {digitTwo}
+        three = {digitThree}
+        four = {digitFour}
+        five = {digitFive}
+        six = {digitSix}
+        />,
+        document.querySelector("#root")
+    );
+    counter++
+}, 1000);
